@@ -51,15 +51,13 @@ class Person {
     if (this.stomach.length < 10) {
       this.stomach.push(food);
     }
-  };
-
+  }
   poop() {
     this.stomach = [];
-  };
-
+  }
   toString() {
     return `${this.name}, ${this.age}`;
-  };
+  }
 }
 
 /*
@@ -77,7 +75,27 @@ class Person {
 */
 
 class Car {
+  constructor(model, milesPerGallon) {
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+  // methods
+  fill(amount) {
+    this.tank += amount;
+  }
+  drive(distance) {
+    let maxDistance = this.tank * this.milesPerGallon;
+    let fuelConsumption = (distance / this.milesPerGallon);
 
+    if (fuelConsumption > this.tank) {
+      return `I ran out of fuel at ${maxDistance} miles!`;
+    }
+
+    this.odometer += distance;
+    this.tank -= fuelConsumption;
+  }
 }
 
 /*
